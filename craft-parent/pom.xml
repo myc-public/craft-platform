@@ -25,6 +25,8 @@
         <spring-boot.version>4.0.0</spring-boot.version>
         <testcontainers.version>2.0.2</testcontainers.version>
         <otel.version>1.55.0</otel.version>
+        <springdoc.version>2.3.0</springdoc.version>
+        <lombok.version>1.18.30</lombok.version>
 
         <!-- Quality tooling versions (plugins configured later, e.g. by craft-build-config) -->
         <jacoco.version>0.8.12</jacoco.version>
@@ -90,6 +92,16 @@
                 <version>${otel.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!--
+              Pinned explicitly to override the lombok.version that
+              spring-boot-dependencies manages internally (currently newer
+              than what we want here).
+            -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
