@@ -2,6 +2,38 @@
 
 All notable changes to `craft-parent` are documented here.
 
+## 2.2.0-SNAPSHOT
+
+- `maven-surefire-plugin`: added `**/*Tests.java` alongside `**/*Test.java`
+  in the unit test includes. Spring Initializr generates the application
+  test class as `<AppName>Tests.java` (plural), which the 2.1.0-SNAPSHOT
+  pattern silently excluded - discovered by inheriting this parent from
+  `inner-order-api`, where the generated `*ApplicationTests.java` ran 0
+  tests with no build failure. `maven-failsafe-plugin`'s `**/*IT.java`
+  include is unchanged (no equivalent Spring Initializr convention gap).
+
+## 2.1.0-SNAPSHOT
+
+- `maven-compiler-plugin`: set `<release>` from the `java.version` property
+  (already in place) and added `-parameters` (via `<parameters>true</parameters>`)
+  so parameter names are retained in compiled bytecode.
+- Added a `spring-boot-maven-plugin` `pluginManagement` entry with the
+  `repackage` and `build-info` executions preconfigured, so a consuming
+  service only needs to declare the plugin with no configuration. This
+  reverses the 1.2.0-SNAPSHOT decision to exclude it entirely: the plugin is
+  now *managed* (versioned/preconfigured) but still never referenced from a
+  `<plugins>` section in this repo itself, since no module here is a
+  deployable application.
+- `maven-resources-plugin`: restored the `@...@` filtering delimiter
+  (`useDefaultDelimiters=false`, `delimiters=[@]`) for `application.yml`/
+  `.properties`, and added `nonFilteredFileExtensions` (`jks`, `p12`, `pfx`,
+  `crt`, `cer`, `der`) so binary/certificate resources are never filtered.
+- `maven-surefire-plugin`: explicit `**/*Test.java` include (unit tests).
+- `maven-failsafe-plugin`: explicit `**/*IT.java` include (integration
+  tests), plus `integration-test`/`verify` executions so failsafe actually
+  runs and fails the build on integration test failures once a consumer
+  declares the plugin.
+
 ## 2.0.0-SNAPSHOT
 
 - **Breaking**: bumped `spring-boot.version` from `3.4.1` to `4.0.0`.
