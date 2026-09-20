@@ -56,4 +56,31 @@
         </server>
     </servers>
 
+    <!-- URLs ignored: the "*" mirror redirects them to Nexus. This profile only allows SNAPSHOT
+         resolution (the Super POM's central is releases-only, and the mirror inherits that). -->
+    <profiles>
+        <profile>
+            <id>nexus-snapshots</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://localhost</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://localhost</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>nexus-snapshots</activeProfile>
+    </activeProfiles>
+
 </settings>
