@@ -14,4 +14,27 @@
         <module>craft-build-config</module>
     </modules>
 
+    <properties>
+        <nexus.url>https://newly-podcast-rising-preference.trycloudflare.com</nexus.url>
+    </properties>
+
+    <!--
+      Covers this aggregator module itself and craft-build-config (which
+      inherits from it) for `mvn deploy`. craft-parent is standalone (no
+      <parent>, see its own CLAUDE.md rule) so it declares the same block
+      independently.
+    -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Releases</name>
+            <url>${nexus.url}/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshots</name>
+            <url>${nexus.url}/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
