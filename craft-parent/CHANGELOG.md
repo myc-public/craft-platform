@@ -2,6 +2,18 @@
 
 All notable changes to `craft-parent` are documented here.
 
+## 2.3.0-SNAPSHOT
+
+- Added `<distributionManagement>` pointing `mvn deploy` at the internal
+  Nexus instance (`nexus-releases` / `nexus-snapshots` hosted repositories),
+  via a new `nexus.url` property. Replaces the need for each consuming
+  service to declare its own `distributionManagement` (several were still
+  pointing at a per-service Artifactory).
+- This is config-only (no dependency/plugin version changes); the actual
+  blocking of direct Maven Central access is enforced by the shared
+  `settings.xml` (wildcard `<mirror>`) at the root of `craft-platform`, not
+  by anything in this POM.
+
 ## 2.2.0-SNAPSHOT
 
 - `maven-surefire-plugin`: added `**/*Tests.java` alongside `**/*Test.java`
