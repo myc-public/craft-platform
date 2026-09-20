@@ -32,7 +32,7 @@
             <id>nexus</id>
             <mirrorOf>*</mirrorOf>
             <name>Nexus - single entry point for all repositories (blocks direct Maven Central access)</name>
-            <url>https://newly-podcast-rising-preference.trycloudflare.com/repository/maven-public/</url>
+            <url>https://defend-provider-ladder-biographies.trycloudflare.com/repository/maven-public/</url>
         </mirror>
     </mirrors>
 
