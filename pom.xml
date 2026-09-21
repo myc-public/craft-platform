@@ -15,7 +15,7 @@
     </modules>
 
     <properties>
-        <nexus.url>https://stylish-delete-anyway-functional.trycloudflare.com</nexus.url>
+        <nexus.url>${env.NEXUS_URL}</nexus.url>
     </properties>
 
     <!--

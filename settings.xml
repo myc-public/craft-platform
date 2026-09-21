@@ -32,7 +32,7 @@
             <id>nexus</id>
             <mirrorOf>*</mirrorOf>
             <name>Nexus - single entry point for all repositories (blocks direct Maven Central access)</name>
-            <url> https://stylish-delete-anyway-functional.trycloudflare.com/repository/maven-public/</url>
+            <url>${env.NEXUS_URL}/repository/maven-public/</url>
         </mirror>
     </mirrors>
 
